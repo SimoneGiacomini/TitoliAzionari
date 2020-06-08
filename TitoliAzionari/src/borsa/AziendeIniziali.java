@@ -1,49 +1,43 @@
 package borsa;
 
 import titolo.ClassificazioneAziendale;
-import titolo.ITitoli;
-
-public enum AziendeIniziali implements ITitoli {
+import titolo.ITitolo;
+import titolo.Titolo;
+@Deprecated
+public enum AziendeIniziali implements ITitolo{
 	APPLE("Apple", 260.174, ClassificazioneAziendale.GRANDE),
 	MICROSOFT("Microsoft", 125.8,ClassificazioneAziendale.GRANDE), 
-	AMAZON("AMAZON", 280.522, ClassificazioneAziendale.GRANDE);
-	
-	
-	/**
-	 * @return the nome
-	 */
-	public String getNome() {
-		return nome;
-	}
+	AMAZON("AMAZON", 280.522, ClassificazioneAziendale.GRANDE)
+	;
 
-	/**
-	 * @return the valore
-	 */
-	public double getValore() {
-		return valore;
-	}
-
-	/**
-	 * @return the totaleAzioni
-	 */
-	public int getTotaleAzioni() {
-		return totaleAzioni.getNumeroAzioni();
-	}
+	private Titolo titolo;
 
 	private AziendeIniziali(String nome, double valore, ClassificazioneAziendale totaleAzioni) {
-		this.nome = nome;
-		this.valore = valore;
-		this.totaleAzioni = totaleAzioni;
+		titolo=new Titolo(nome, valore, totaleAzioni);
 	}
-
-	private String nome;
-	private double valore;
-	private ClassificazioneAziendale totaleAzioni;
 
 	@Override
-	public void oscilla() {
-		// TODO Auto-generated method stub
-
+	public String getNome() {
+	return titolo.getNome();
 	}
+
+
+	@Override
+	public double getPrezzo() {
+		return titolo.getPrezzo();
+	}
+
+
+	@Override
+	public int getTotaleAzioni() {
+		return titolo.getTotaleAzioni();
+	}
+
+
+	@Override
+	public void variazioneGiornaliera() {
+		titolo.variazioneGiornaliera();
+	}
+	
 
 }

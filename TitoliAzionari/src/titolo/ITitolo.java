@@ -1,14 +1,19 @@
 package titolo;
 
-public interface ITitoli  {
+public interface ITitolo  {
 	public static final double MAX_RIALZO = 0.2;
 	public static final double MIN_RIBASSO = -0.2;
 
 	String getNome();
 
-	double getValore();
+	double getPrezzo();
 
 	int getTotaleAzioni();
 
-	void oscilla() ;}
+	void variazioneGiornaliera() ;
+
+	int hashCode();
+	
+	boolean equals(Object o);
+}
 

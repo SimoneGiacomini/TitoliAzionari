@@ -6,6 +6,6 @@ public abstract class Oscilla {
 
 	public static double oscilla(double valoreSingolaAzione) {
 		return valoreSingolaAzione
-				+ (valoreSingolaAzione * EstrazioniCasuali.estraiDouble(ITitoli.MIN_RIBASSO, ITitoli.MAX_RIALZO));
+				+ (valoreSingolaAzione * EstrazioniCasuali.estraiDouble(ITitolo.MIN_RIBASSO, ITitolo.MAX_RIALZO));
 	}
 }

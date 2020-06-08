@@ -1,21 +1,36 @@
 package titolo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Titolo implements ITitoli {
+public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
+
+	private static final String NO_CATEGORIA = "LE AZIONI TOTALI DI QUESTA AZIENDA NON CORRISPONDONO A NESSUNA CLASSIFICAZIONE aziendale";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String nome;
+
 	private double valore;
+
 	private ClassificazioneAziendale totaleAzioni;
 
 	public Titolo(String nome, double valore, ClassificazioneAziendale totaleAzioni) {
-		this.nome = nome;
-		this.valore = valore;
+		setNome(nome);
+
+		setValore(valore);
+
 		this.totaleAzioni = totaleAzioni;
+
 	}
 
+	/** <b>Costruttore di DEFAULT</b> */
 	public Titolo(String nome, double valore) {
+
 		this(nome, valore, ClassificazioneAziendale.MEDIA);
+
 	}
 
 	/**
@@ -24,9 +39,30 @@ public class Titolo implements ITitoli {
 	 *             Aziendale
 	 */
 	public Titolo(String nome, double valore, int totaleAzioni) throws NullPointerException {
-		this.nome = nome;
-		this.valore = valore;
+
+		setNome(nome);
+
+		setValore(valore);
+
 		this.totaleAzioni = checkIntTotaleAzienda(totaleAzioni);
+	}
+
+	private void setNome(String nome) {
+		nome = nome.trim();
+
+		if (nome == null || nome.length() < 1) {
+			throw new IllegalArgumentException("il nome non puo' essere vuoto");
+		}
+
+		this.nome = nome;
+	}
+
+	private void setValore(double valore) {
+
+		if (valore < 1.0)
+			throw new IllegalArgumentException("Il valore di una singola azione non puo' essere minore di 1");
+
+		this.valore = valore;
 	}
 
 	/**
@@ -38,30 +74,71 @@ public class Titolo implements ITitoli {
 
 		ClassificazioneAziendale gr = ClassificazioneAziendale.valoreDi(totaleAzioni);
 
-		Objects.requireNonNull(gr,
-				"LE AZIONI TOTALI DI QUESTA AZIENDA NON CORRISPONDONO A NESSUNA CLASSIFICAZIONE aziendale");
+		Objects.requireNonNull(gr, NO_CATEGORIA);
 
 		return gr;
 	}
 
+	// private void setTotaleAzioni(int totAzioni) {
+	// int max=Math.max(valore/10,20);
+	// if(totAzioni<max){
+	// ---------------
+	// throw new IllegalArgumentException("Numero totale di azioni, troppo basso");
+	// ---------------
+	// <<<<<<<<<<<>
+	// totAzioni=max;
+	// <<<<<<<<<<<>
+	// }
+	// this.totaleAzioni=totAzioni;
+	// }
+
 	@Override
 	public String getNome() {
+
 		return nome;
 	}
 
 	@Override
-	public double getValore() {
+	public double getPrezzo() {
+
 		return valore;
 	}
 
 	@Override
 	public int getTotaleAzioni() {
+
 		return totaleAzioni.getNumeroAzioni();
 	}
 
 	@Override
-	public void oscilla() {
-		valore = Oscilla.oscilla(getValore());
+	public void variazioneGiornaliera() {
+
+		valore = Oscilla.oscilla(getPrezzo());
+	}
+
+	@Override
+	public int hashCode() {
+
+		return getNome().hashCode();
+	}
+
+	@Override
+	public int compareTo(ITitolo o) {
+
+		return (int) (o.getPrezzo() - this.getPrezzo());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (o instanceof Titolo) {
+
+			Titolo t = (Titolo) o;
+
+			return getNome().equalsIgnoreCase(t.getNome()) && getTotaleAzioni() == t.getTotaleAzioni();
+		} else
+
+			return false;
 	}
 
 }
