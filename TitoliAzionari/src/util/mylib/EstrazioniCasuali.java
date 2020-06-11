@@ -2,7 +2,7 @@ package util.mylib;
 
 import java.util.*;
 /**classe per fare delle estrazioni casuali*/
-public class EstrazioniCasuali {
+public abstract class EstrazioniCasuali {
 	private static Random rand = new Random();
 
 	public static int estraiIntero(int min, int max) {

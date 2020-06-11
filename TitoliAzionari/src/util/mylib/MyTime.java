@@ -2,7 +2,7 @@ package util.mylib;
 
 import java.util.concurrent.TimeUnit;
 
-public class MyTime {
+public abstract class MyTime {
 
 	public static void wait(int seconds) {
 		try {

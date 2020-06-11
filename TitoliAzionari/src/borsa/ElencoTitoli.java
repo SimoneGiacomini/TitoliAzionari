@@ -1,26 +1,40 @@
 package borsa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import titolo.ClassificazioneAziendale;
 import titolo.ITitolo;
+import titolo.Titolo;
 
 public class ElencoTitoli implements Serializable {
+
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private  final long serialVersionUID = 1752405761414486254L;
 
-	private static Set<ITitolo> borsa = new TreeSet<>();
+	private  Set<ITitolo> borsa = new TreeSet<>();
 
-	public static boolean aggiungiTitolo(ITitolo titoloDaAggiungere) {
-	
+	public  boolean aggiungiTitolo(ITitolo titoloDaAggiungere) {
+
 		return borsa.add(titoloDaAggiungere);
 	}
 
-	public static void oscillazioneBorsa() {
+	public  boolean aggiungiTitoli(Collection<ITitolo> titoli) {
+		return borsa.addAll(titoli);
+	}
+	
+	
+	
+	public  void oscillazioneBorsa() {
 
 		for (ITitolo iTitoli : borsa) {
 
@@ -28,22 +42,21 @@ public class ElencoTitoli implements Serializable {
 		}
 	}
 
-	public static boolean contieneTitolo(ITitolo titolo) {
+	public  boolean contieneTitolo(ITitolo titolo) {
 
 		return borsa.contains(titolo);
 	}
 
-	public static boolean contieneTitolo(String nomeTitolo) {
+	public  boolean contieneTitolo(String nomeTitolo) {
 
-		for (ITitolo iTitoli : borsa) {
-
-			if (iTitoli.getNome().equalsIgnoreCase(nomeTitolo))
-				return true;
-		}
-		return false;
+		return !borsa.stream().noneMatch(titolo -> titolo.getNome().equalsIgnoreCase(nomeTitolo));
 	}
 
-	public static int numTitoli() {
+	public  int numTitoli() {
 		return borsa.size();
+	}
+	
+	public  ITitolo getTitolo(int index ){
+		return (ITitolo) borsa.stream().sorted().toArray()[index];
 	}
 }

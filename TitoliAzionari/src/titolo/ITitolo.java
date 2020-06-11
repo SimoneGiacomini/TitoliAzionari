@@ -6,8 +6,10 @@ public interface ITitolo  {
 
 	String getNome();
 
-	double getPrezzo();
+	double getPrezzoSingolaAzione();
 
+	double getQuotazioneTotale();
+	
 	int getTotaleAzioni();
 
 	void variazioneGiornaliera() ;

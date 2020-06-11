@@ -1,29 +1,38 @@
 package portafoglioUtente;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import titolo.ITitolo;
 
-public class Lotto {
+public class Lotto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -319727067323507331L;
 
 	private ITitolo azione;
 
 	private int quantita;
 
-	private final int quantitaMassimaAcquistabile = azione.getTotaleAzioni();
+	private final int quantitaMassimaAcquistabile;
 
 	public Lotto(ITitolo azione, int quantita) {
+
+		quantitaMassimaAcquistabile = azione.getTotaleAzioni();
 
 		setAzione(azione);
 
 		setQuantita(quantita);
+
 	}
 
 	/**
 	 * @return the azione
 	 */
 	public ITitolo getAzione() {
-		return azione;
+		return this.azione;
 	}
 
 	/**
@@ -36,6 +45,11 @@ public class Lotto {
 
 		this.azione = azione;
 
+	}
+
+	public String toString() {
+		return String.format("Il lotto di azioni \" %s\"%nValore totale %1.3f%nValore singola Azione %1.3f", getNomeLotto(),
+				getValoreLotto(), getValoreSingolaAzione());
 	}
 
 	/**
@@ -51,10 +65,10 @@ public class Lotto {
 	 */
 	private void setQuantita(int quantita) {
 
-		if (quantita > quantitaMassimaAcquistabile)
+		if (quantita > this.quantitaMassimaAcquistabile)
 
 			throw new IllegalArgumentException(
-					"NON PUOI ACQUISTARE PIU' di " + quantitaMassimaAcquistabile + " azioni");
+					"NON PUOI ACQUISTARE PIU' di " + this.quantitaMassimaAcquistabile + " azioni");
 
 		else if (quantita < 1)
 
@@ -89,10 +103,37 @@ public class Lotto {
 
 		} catch (IllegalArgumentException e) {
 
-			quantita = 0;
-			
+			this.quantita = 0;
+
 		}
 		return true;
+	}
+
+	public double getValoreLotto() {
+
+		return this.azione.getPrezzoSingolaAzione() * this.quantita;
+	}
+
+	public double getValoreSingolaAzione() {
+
+		return this.azione.getPrezzoSingolaAzione();
+	}
+
+	public String getNomeLotto() {
+		return this.azione.getNome().toUpperCase();
+	}
+
+	public int hashCode() {
+		return this.azione.hashCode();
+	}
+
+	public boolean equals(Object o) {
+
+		if (o instanceof Lotto) {
+			Lotto lotto = (Lotto) o;
+			return lotto.getAzione().equals(this.azione);
+		}
+		return false;
 	}
 
 }

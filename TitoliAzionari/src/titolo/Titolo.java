@@ -5,12 +5,14 @@ import java.util.Objects;
 
 public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 
-	private static final String NO_CATEGORIA = "LE AZIONI TOTALI DI QUESTA AZIENDA NON CORRISPONDONO A NESSUNA CLASSIFICAZIONE aziendale";
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1773189871419516967L;
 
+	private static final String NO_CATEGORIA = "LE AZIONI TOTALI DI QUESTA AZIENDA NON CORRISPONDONO A NESSUNA CLASSIFICAZIONE aziendale";
+	
 	private String nome;
 
 	private double valore;
@@ -99,7 +101,7 @@ public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 	}
 
 	@Override
-	public double getPrezzo() {
+	public double getPrezzoSingolaAzione() {
 
 		return valore;
 	}
@@ -113,7 +115,7 @@ public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 	@Override
 	public void variazioneGiornaliera() {
 
-		valore = Oscilla.oscilla(getPrezzo());
+		valore = Oscilla.oscilla(getPrezzoSingolaAzione());
 	}
 
 	@Override
@@ -125,7 +127,7 @@ public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 	@Override
 	public int compareTo(ITitolo o) {
 
-		return (int) (o.getPrezzo() - this.getPrezzo());
+		return (int) (o.getPrezzoSingolaAzione() - this.getPrezzoSingolaAzione());
 	}
 
 	@Override
@@ -135,10 +137,16 @@ public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 
 			Titolo t = (Titolo) o;
 
-			return getNome().equalsIgnoreCase(t.getNome()) && getTotaleAzioni() == t.getTotaleAzioni();
+			return getNome().equalsIgnoreCase(t.getNome());
 		} else
 
 			return false;
+	}
+
+	@Override
+	public double getQuotazioneTotale() {
+		
+		return valore * totaleAzioni.getNumeroAzioni();
 	}
 
 }

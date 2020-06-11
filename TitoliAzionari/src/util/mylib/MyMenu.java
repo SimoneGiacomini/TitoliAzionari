@@ -35,7 +35,22 @@ public class MyMenu<T> {
 		}
 
 	}
-
+	
+	public int scegliSenzaEsci() {
+		stampaMenu();
+		return InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 1, voci.length);
+	}
+	
+	public T scegliEritornaOpzione() {
+		stampaMenu();
+		System.out.println('\n' + VOCE_USCITA + '\n');
+		return getVoci()[InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 0, voci.length)-1];
+	}
+	public T scegliSenzaEsciEritornaOpzione() {
+		stampaMenu();
+		return getVoci()[InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 1, voci.length)-1];
+	}
+	
 	protected String getTitolo() {
 		return titolo;
 	}

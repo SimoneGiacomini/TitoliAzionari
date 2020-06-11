@@ -1,6 +1,7 @@
 package titolo;
 
-public enum ClassificazioneAziendale {
+
+public enum ClassificazioneAziendale  {
 
 	PICCOLA(100), MEDIA(250), GRANDE(500);
 

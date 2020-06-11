@@ -2,7 +2,7 @@ package util.mylib;
 import java.io.*;
 
 
-public class ServizioFile
+public abstract class ServizioFile
 {
 	private final static String MSG_NO_FILE = "ATTENZIONE: NON TROVO IL FILE ";
 	private final static String MSG_NO_LETTURA = "ATTENZIONE: PROBLEMI CON LA LETTURA DEL FILE ";

@@ -3,7 +3,7 @@ package util.mylib;
 import java.util.ArrayList;
 
 /** Classe che fa delle indentazioni alle stringhe in console @author Simone */
-public class BelleStringhe {
+public abstract class BelleStringhe {
 
 	public static final char TRATTINO = '-';
 

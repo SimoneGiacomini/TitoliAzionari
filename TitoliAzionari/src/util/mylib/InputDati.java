@@ -3,7 +3,7 @@ package util.mylib;
 import java.util.*;
 
 /** Classe utile per ricevere dati input da tastiera in console */
-public class InputDati {
+public abstract class InputDati {
 	private static Scanner lettore = creaScanner();
 
 
