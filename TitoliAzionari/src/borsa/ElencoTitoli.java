@@ -19,9 +19,9 @@ public class ElencoTitoli implements Serializable {
 	/**
 	 * 
 	 */
-	private  final long serialVersionUID = 1752405761414486254L;
+	private  static final long serialVersionUID = 1752405761414486254L;
 
-	private  Set<ITitolo> borsa = new TreeSet<>();
+	private  Set<ITitolo> borsa = new HashSet<>();
 
 	public  boolean aggiungiTitolo(ITitolo titoloDaAggiungere) {
 

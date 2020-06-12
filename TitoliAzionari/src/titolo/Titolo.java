@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 
-	
 	/**
 	 * 
 	 */
@@ -148,5 +147,9 @@ public class Titolo implements ITitolo, Serializable, Comparable<ITitolo> {
 		
 		return valore * totaleAzioni.getNumeroAzioni();
 	}
+	
+	
+	
+	
 
 }

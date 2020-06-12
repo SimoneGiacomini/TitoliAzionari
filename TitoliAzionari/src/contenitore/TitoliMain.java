@@ -4,6 +4,7 @@ import java.io.File;
 
 import borsa.ElencoTitoli;
 import portafoglioUtente.Portafoglio;
+import titolo.Titolo;
 import util.mylib.InputDati;
 import util.mylib.ServizioFile;
 
@@ -28,8 +29,8 @@ public class TitoliMain
 	  ElencoTitoli listaTitoli = null;
 	  
 	  Contenitore container = null;
-		
-	  boolean caricamentoRiuscito = false;
+
+		boolean caricamentoRiuscito = false;
 		
 	  if ( fTitoli.exists() )
 		{
@@ -39,7 +40,7 @@ public class TitoliMain
 			 listaTitoli = container.getElencoTitoli();
 			 patrimonio = container.getPortafoglio();
 		   }
-		  catch (ClassCastException e)
+		  catch (Exception e)
 		   {
 			 System.out.println(MSG_NO_CAST);
 			}
@@ -51,7 +52,6 @@ public class TitoliMain
 				 caricamentoRiuscito = true;
 				 }
 			  }
-			
 		 }
 			
 		 if (!caricamentoRiuscito)

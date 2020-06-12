@@ -54,6 +54,7 @@ public class Portafoglio implements Serializable{
 		  for (Iterator iterator = portaFoglio.iterator(); iterator.hasNext();) {
 			Lotto lotto = (Lotto) iterator.next();
 			result.append(lotto.toString());
+			result.append('\n');
 			
 		}
 			
