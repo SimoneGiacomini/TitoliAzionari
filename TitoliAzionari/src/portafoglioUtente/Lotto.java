@@ -10,7 +10,7 @@ public class Lotto implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -319727067323507331L;
+	private static final long serialVersionUID = 1L;
 
 	private ITitolo azione;
 
@@ -48,8 +48,8 @@ public class Lotto implements Serializable {
 	}
 
 	public String toString() {
-		return String.format("Il lotto di azioni \" %s\"%nValore totale %1.3f%nValore singola Azione %1.3f", getNomeLotto(),
-				getValoreLotto(), getValoreSingolaAzione());
+		return String.format("Il lotto di azioni \" %s\"%nValore totale %1.3f%nValore singola Azione %1.3f%nTolale azioni possedute per questo lotto %d/%d", getNomeLotto(),
+				getValoreLotto(), getValoreSingolaAzione(),getQuantita(),azione.getTotaleAzioni());
 	}
 
 	/**
