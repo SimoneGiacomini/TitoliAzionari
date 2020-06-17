@@ -2,8 +2,9 @@ package util.mylib;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class MyTime {
+public  class MyTime {
 
+	private MyTime() {}
 	public static void wait(int seconds) {
 		try {
 			TimeUnit.SECONDS.sleep(seconds);

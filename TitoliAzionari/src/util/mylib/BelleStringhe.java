@@ -3,7 +3,7 @@ package util.mylib;
 import java.util.ArrayList;
 
 /** Classe che fa delle indentazioni alle stringhe in console @author Simone */
-public abstract class BelleStringhe {
+public class BelleStringhe {
 
 	public static final char TRATTINO = '-';
 
@@ -14,6 +14,9 @@ public abstract class BelleStringhe {
 	public final static char STELLA = '*';
 
 	public final static char GRADO = '\u00b0';
+
+	private BelleStringhe() {
+	}
 
 	public static String incorniciaCentrato(String s, int lunghezzaCornice) {
 		StringBuilder res = new StringBuilder();

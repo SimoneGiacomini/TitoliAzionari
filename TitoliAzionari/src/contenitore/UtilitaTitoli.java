@@ -8,7 +8,7 @@ import titolo.Titolo;
 import util.mylib.InputDati;
 import util.mylib.MyMenu;
 
-class UtilitaTitoli
+public class UtilitaTitoli
 {
 
  private final static String MSG_NOME_TITOLO = "INSERIRE LA DENOMINAZIONE DEL NUOVO TITOLO DA CREARE:";

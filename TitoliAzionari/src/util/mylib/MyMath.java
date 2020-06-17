@@ -1,11 +1,12 @@
 package util.mylib;
 
-public abstract class MyMath{
+public  class MyMath{
 	
 	private static final int POWER_2 = 2;
 	
 	private static final double MINIMUM = 0.00001;
 	
+	private MyMath() {}
 	public static double logBaseGenerica(double base,double x) {
 		return Math.log(x)/Math.log(base);
 	}

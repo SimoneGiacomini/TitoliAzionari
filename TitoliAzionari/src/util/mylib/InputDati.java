@@ -3,8 +3,8 @@ package util.mylib;
 import java.util.*;
 
 /** Classe utile per ricevere dati input da tastiera in console */
-public abstract class InputDati {
-	private static Scanner lettore = creaScanner();
+public  class InputDati {
+	private static Scanner lettore = setScanner();
 
 
 	private final static String ERRORE_FORMATO = "Attenzione: il dato inserito non e' nel formato corretto";
@@ -16,12 +16,16 @@ public abstract class InputDati {
 	
 	public final static char RISPOSTA_SI = 'S';
 	public final static char RISPOSTA_NO = 'N';
-	  
-	private static Scanner creaScanner() {
+	/**Nessuno puo istanziare questa classe*/
+	private InputDati() {};
+	
+	private static Scanner setScanner() {
 		Scanner creato = new Scanner(System.in);
 		creato.useDelimiter(System.getProperty("line.separator"));
 		return creato;
+		
 	}
+	
 
 	/**
 	 * Legge una {@linkplain String} da input senza nessun controllo

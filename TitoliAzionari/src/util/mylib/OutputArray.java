@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**Classe <tt>Util<tt> con metodi utili alla scrittura in {@linkplain Console}
  * @author Simone Giacomini*/
-public abstract class OutputArray {
+public class OutputArray {
 	
 	/**Impossibile creare un istanza di questa classe*/
 	private OutputArray() {

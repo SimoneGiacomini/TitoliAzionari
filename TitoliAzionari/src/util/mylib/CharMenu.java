@@ -51,7 +51,7 @@ public class CharMenu<T> extends MyMenu<T> {
 			super.stampaMenu();
 		} else {
 			System.out.println(getTitolo());
-			for (char a = 'A', i = 0; i < getVoci().length; a++, i++) {
+			for (char i = 0; i < getVoci().length;  i++) {
 				System.out.println((char)('A'+i) + ")\t" + getVoci()[i]);}
 		}
 	}
